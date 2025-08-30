@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* utline: 1px solid red;
+   */
+}
+body {
+  background-image: url(https://picsum.photos/1920/1080?random);
+  font-family: sans-serif;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.caixa-grande {
+  padding: 20px;
+  background-color: #0c0c0c;
+  opacity: 0.9;
+  border-radius: 50px;
+  height: 60vh;
+  width: 60vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.iconesite{
+    height: 100px;
+    width: 100px;
+    filter: invert(1) brightness(2);
+    
+}
+.caixa-busca{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+}
+.botao-busca {
+  height: 20px;
+  width: 20px;
+  border: none;
+  background: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  float: right;
+  padding: 5px;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icone-busca {
+  height: 20px;
+  width: 20px;
+  color: fff;
+  filter: invert(1) brightness(2); /* inverte e deixa mais claro */
+}
+.input-cidade {
+  border: none;
+  border-radius: 15px;
+  padding: 4px;
+  width:300px;
+  outline: none;
+  box-shadow: none;
+
+}
+.texto-cidade {
+  color: #fff;
+  padding-top: 10px;
+  font-size: 20px;
+}
+.temp {
+  color: #fff;
+  padding-top: 10px;
+  font-size: 18px;
+}
+.clima {
+  color: #fff;
+  padding-top: 10px;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+.umidade {
+  color: #fff;
+  padding-top: 10px;
+  font-size: 15px;
+}
