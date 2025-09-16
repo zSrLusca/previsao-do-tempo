@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Registro</h2>
+    <input id="name" type="text" placeholder="digite seu nome">
+    <input id="email" type="text" placeholder="digite seu email">
+    <input id="password" type="password" placeholder="digite sua senha">
+    <input id="confirmpassword" type="password" placeholder="confirme sua senha">
+    <button id="registerBtn">registrar-se</button>
+    <p id="message"></p>
+
+    <script>
+        const apiUrl = "http://localhost:3000/auth/register"
+
+        document.getElementById("registerBtn").addEventListener("click", async () =>{
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmpassword = document.getElementById("confirmpassword").value;
+
+            if (password !== confirmpassword){
+                document.getElementById("message").innerText = "As senhas nao coincidem!";
+                return;
+            }
+            try{
+                const res = await fetch(apiUrl, {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({name, email, password, confirmpassword})
+                });
+
+                const data = await res.json();
+
+                if (res.ok){
+                    document.getElementById("message").innerText = "Usuário registrado com sucesso";
+                    //ja redireciona para a pagina de login
+                    setTimeout(() => {
+                        window.location.href = "/login.html";
+                    }, 2000);
+                } else {
+                    document.getElementById("message").innerText = data.message || "Erro ao registrar!";
+                }
+            } catch (err){
+                document.getElementById("message").innerText = "Erro de conexão com a API!";
+            }
+        });
+    </script>
+</body>
+</html>

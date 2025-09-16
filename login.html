@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <input id="email" type="text" placeholder="digite seu email">
+    <input id="password" type="password" placeholder="digite sua senha">
+    <button id="loginBtn" >login</button>
+    <p id="message"></p>
+    <button onclick="window.location.href='register.html'">Registrar</button>
+    
+
+    <script>
+        const apiUrlLogin = "http://localhost:3000/auth/login";
+
+        document.getElementById("loginBtn").addEventListener("click", async() => {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (!email || !password){
+                document.getElementById("message").innerText = "Preencha todos os campos";
+                return;
+            }
+            try {
+                const res = await fetch(apiUrlLogin, {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({email, password})
+                });
+
+                const data = await res.json();
+
+                if (res.ok){
+                    //salva o token no localStorage
+                    localStorage.setItem("token", data.token);
+                    document.getElementById("message").innerText = "Login realizado com sucesso";
+
+
+                    //redirecionar para a pagina principal
+                    setTimeout(() => {
+                        window.location.href = "/aplicacao.html";
+                    }, 1500);
+                } else{
+                    document.getElementById("message").innerText = data.msg || "Erro no login";
+                }
+
+            } catch (err) {
+                document.getElementById("message").innerText = "Erro de conexão com a API!";
+                console.error(err)
+            }
+        })
+    </script>
+</body>
+</html>
+
