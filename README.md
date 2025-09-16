@@ -1,6 +1,8 @@
 Site básico de previsão do tempo.
-HTML | CSS | JS
-
+HTML | CSS | JS 
+Sistema de registro e login de usuario funcional com node.js
+utilização de banco de dados via MongoDB atlas
+Requisisões da API com try catch
 utlização de API
 await fetch then
 
